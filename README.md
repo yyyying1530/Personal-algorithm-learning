@@ -1,4 +1,4 @@
 # 个人算法笔记
 
 参考链接：
-> Oi WIKI https://oi-wiki.org/
+> Oi WIKI <https://oi-wiki.org/>
