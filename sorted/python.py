@@ -19,6 +19,32 @@ def bubble_sort(nums):
                  nums[i + 1], nums[i] = nums[i], nums[i + 1]
     return nums
 
+def insertion_sort(nums):
+    n = len(nums)
+    for i in range(1,n):
+        x = nums[i]
+        j = i - 1
+        while j >= 0 and nums[j] > x:
+            nums[j+1] = nums[j]
+            j -= 1
+        nums[j+1] = x
+    return nums
+
+def counting_sort(nums):
+    W = max(nums) + 1
+    n = len(nums)
+    w = [0] * W
+    ans = [0] * n
+    for i in nums:
+        w[i] += 1
+    for i in range(1, W):
+        w[i] += w[i-1]
+    for i in nums:
+        ans[w[i] - 1] = i
+        w[i] -= 1
+    return ans
+
+
 if __name__ == "__main__":
     a = [15,2,32,45,6,9]
-    print(bubble_sort(a))
+    print(counting_sort(a))
