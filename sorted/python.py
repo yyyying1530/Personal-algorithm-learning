@@ -44,7 +44,23 @@ def counting_sort(nums):
         w[i] -= 1
     return ans
 
+def quick_sort(nums, left, right):
+    if left >= right:
+        return 
+    midpos = (left + right) // 2
+    mid = nums[midpos]
+    lp = left
+    rp = right 
+    while lp < rp:
+        while lp < rp and nums[rp] > mid:
+            rp -= 1
+        while lp < rp and nums[lp] < mid:
+            lp += 1
+        nums[lp], nums[rp] = nums[rp], nums[lp]
+    quick_sort(nums, left, lp - 1)
+    quick_sort(nums, lp + 1, right)
 
 if __name__ == "__main__":
     a = [15,2,32,45,6,9]
-    print(counting_sort(a))
+    bubble_sort(a)
+    print(a)
