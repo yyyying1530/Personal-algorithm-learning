@@ -68,4 +68,26 @@ public class Sort {
         }
         return ans;
     }
+
+    public void quick_sort(int[] arr, int left, int right){
+        if(left >= right){
+            return;
+        }
+        int mid = arr[right];
+        int lp = left;
+        int rp = right;
+        while(lp < rp){
+            while(lp < rp && arr[lp] < mid){
+                lp++;
+            }
+            arr[rp] = arr[lp];
+            while (lp < rp && arr[rp] >= mid){
+                rp--;
+            }
+            arr[lp] = arr[rp];
+        }
+        arr[rp] = mid;
+        quick_sort(arr, left, lp-1);
+        quick_sort(arr, lp+1, right);
+    }
 }

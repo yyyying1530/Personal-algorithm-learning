@@ -16,7 +16,7 @@ def bubble_sort(nums):
         for i in range(n-1):
             if nums[i] > nums[i+1]:
                  flag = True
-                 nums[i + 1], nums[i] = nums[i], nums[i + 1]
+                 nums[i + 1], nums[i] = nums[i], nums[i +    1]
     return nums
 
 def insertion_sort(nums):
@@ -47,20 +47,21 @@ def counting_sort(nums):
 def quick_sort(nums, left, right):
     if left >= right:
         return 
-    midpos = (left + right) // 2
-    mid = nums[midpos]
+    mid = nums[left]
     lp = left
     rp = right 
     while lp < rp:
-        while lp < rp and nums[rp] > mid:
+        while lp < rp and nums[rp] >= mid:
             rp -= 1
+        nums[lp] = nums[rp]
         while lp < rp and nums[lp] < mid:
             lp += 1
-        nums[lp], nums[rp] = nums[rp], nums[lp]
+        nums[rp] = nums[lp]
+    nums[lp] = mid
     quick_sort(nums, left, lp - 1)
     quick_sort(nums, lp + 1, right)
 
 if __name__ == "__main__":
-    a = [15,2,32,45,6,9]
-    bubble_sort(a)
+    a = [15,2,32,45,2,6,9]
+    quick_sort(a,0,len(a)-1)
     print(a)
